@@ -1,0 +1,26 @@
+apply plugin: 'java'
+
+description ="""
+Example project for a Gradle build
+Project name: ${project.name}
+More detailed information here... """
+
+version = 0.1.0
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'com.lockerfish.gradle.HelloWorld'
+    }
+}
+
+sourceCompatibility = 1.8
+targetCompatibility= 1.8
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+		implementation fileTree(dir: 'libs', include: ['*.jar'])
+    testImplementation "junit:junit:4.12"
+}
