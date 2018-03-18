@@ -5,22 +5,29 @@ Example project for a Gradle build
 Project name: ${project.name}
 More detailed information here... """
 
-version = 0.1.0
-
-jar {
-    manifest {
-        attributes 'Main-Class': 'com.lockerfish.gradle.HelloWorld'
-    }
-}
-
 sourceCompatibility = 1.8
 targetCompatibility= 1.8
 
+jar {
+    manifest {
+        attributes 'Main-Class': 'com.lockerfish.twilio.App'
+    }
+}
+task execute(type:JavaExec) {
+   main = 'com.lockerfish.twilio.App'
+   classpath = sourceSets.main.runtimeClasspath
+    systemProperty 'TWILIO_ACCOUNT_SID', twilioAccountSid
+    systemProperty 'TWILIO_AUTH_TOKEN', twilioAuthToken
+}
+
 repositories {
     jcenter()
+	mavenCentral()
 }
 
 dependencies {
-		implementation fileTree(dir: 'libs', include: ['*.jar'])
+	implementation fileTree(dir: 'libs', include: ['*.jar'])
+	// https://mvnrepository.com/artifact/com.twilio.sdk/twilio
+	implementation  'com.twilio.sdk:twilio:7.17.9'
     testImplementation "junit:junit:4.12"
 }
