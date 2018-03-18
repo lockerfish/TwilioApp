@@ -18,6 +18,8 @@ task execute(type:JavaExec) {
    classpath = sourceSets.main.runtimeClasspath
     systemProperty 'TWILIO_ACCOUNT_SID', twilioAccountSid
     systemProperty 'TWILIO_AUTH_TOKEN', twilioAuthToken
+	systemProperty 'TWILIO_OWNED_NUMBER', twilioOwnedNumber
+	standardInput = System.in
 }
 
 repositories {
